@@ -1,0 +1,590 @@
+@charset "UTF-8";
+
+/*=========================================
+基本設定
+=========================================*/
+/*すべての要素と疑似要素の余白をリセットし、レイアウトのズレを防ぐ*/
+*,
+*::before,
+*::after {
+  margin: 0;
+  /*デフォルトの外側余白をなくす*/
+  padding: 0;
+  /*デフォルトの内側余白をなくす*/
+  box-sizing: border-box;
+  /*width・heightがpadding・borderを含むようにする*/
+}
+
+/*画像が親要素に収まるようにし、下に余白ができる問題も防ぐ*/
+img {
+  width: 100%;
+  /*画像が横幅いっぱいに広がるようにする*/
+  height: auto;
+  /*アスペクト比を保ったまま高さを自動調整*/
+  vertical-align: bottom;
+  /*縦方向の揃えを指定する。インライン要素やテーブルセル内の要素。ブロックレベル要素などには効かない。
+初期値はbaseline。キーワードはtop,middle,bottom など*/
+}
+
+/*iframe 下の余白をなくす*/
+iframe {
+  vertical-align: bottom;
+  /*画像同様、iframe下の隙間を解消*/
+}
+
+/*=========================================
+ページ全体の背景画像設定
+=========================================*/
+body {
+  background-image: url("../images/bg-paper.jpg");
+  /*背景画像を指定*/
+  background-repeat: repeat;
+  /* 背景画像を繰り返す */
+  background-size: 500px auto;
+  background-color: #f6f0e5;
+}
+
+/*=========================================
+メインコンテンツの囲み領域
+=========================================*/
+.contents {
+  width: 100%;
+  max-width: 720px;
+  /*コンテンツ部分の最大幅（スマホ〜タブレット向け）*/
+  margin: 0 auto;
+  /*左右中央寄せ*/
+  background-color: #F6F0E5;
+  /*背景色（白）→#F6F0E5へ変更*/
+  box-shadow: 0 0 20px rgba(51, 45, 41, 0.14);
+}
+
+/*=========================================
+ヘッダー部分
+=========================================*/
+.header__inner {
+  padding-left: 40px;
+  display: flex;
+  align-items: center;
+  height: 96px;
+  position: relative;
+  z-index: 1;
+  background-color: #f6f0e5;
+  box-shadow: 0 7px 8px -5px rgba(51, 45, 41, 0.5);
+}
+
+/*=========================================
+内側のコンテンツ配置調整
+=========================================*/
+.container {
+  width: 90%;
+  /*画像幅の90%を使用（余白を持たせる） */
+  max-width: 640px;
+  /*コンテンツ幅指定*/
+  margin: 0 auto;
+  /*中央寄せ*/
+}
+
+.section-title {
+  width: 100%;
+  font-family: "Kosugi Maru", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  background-color: #e8c69d;
+  /*店舗からのお知らせ、おいしさの理由・背景色*/
+  padding: 10px 0;
+  /*店舗からのお知らせ、おいしさの理由・上下余白*/
+  box-shadow: 0 7px 8px -5px rgba(51, 45, 41, 0.5);
+}
+
+/*=========================================
+サイトタイトル（ロゴ）のボックス
+=========================================*/
+h1 {
+  max-width: 240px;
+  /*h1の横幅を固定*/
+}
+
+/*=========================================
+メインエリア全体の背景色
+=========================================*/
+main {
+  background-color: #f6f0e5;
+  /*メインコンテンツ領域の背景色*/
+}
+
+
+/*=========================================
+セクションタイトル（見出し）
+=========================================*/
+section h2 {
+  font-size: 26px;
+  /*見出しの文字サイズ*/
+  margin-bottom: 40px;
+  /*下に大きめの余白を取る*/
+  text-align: center;
+  /*テキストを中央に配置*/
+  line-height: 40px;
+  /*行間を広めに設定して見やすく*/
+}
+
+/*=========================================
+セクション内の段落テキスト
+=========================================*/
+/*
+section p{
+margin-bottom:24px;段落ごとの余白
+}
+*/
+
+/*=========================================
+①バナー
+=========================================*/
+/*----------------------
+バナーエリア全体
+----------------------*/
+.bnr {
+  padding: 40px 0;
+  /*上下の余白*/
+}
+
+/*----------------------
+バナーのリスト（横並び）
+----------------------*/
+.bnr ul {
+  display: flex;
+  /*横並びにする*/
+  list-style: none;
+  /*リストマーカーを消す*/
+  justify-content: space-between;
+  /*均等配置*/
+}
+
+/*----------------------
+slick-carouselのスライド設定
+----------------------*/
+.bnr__slider .slick-slide {
+  width: 240px;
+  /*スライド1枚の幅*/
+  margin: 0 20px;
+  /*左右の余白*/
+}
+
+/*----------------------
+slick：前へボタン
+----------------------*/
+.bnr__slider .slick-prev {
+  left: 0;
+  /*配置を左端へ*/
+  z-index: 9;
+  /*他の要素より前面へ*/
+}
+
+/*----------------------
+slick：次へボタン
+----------------------*/
+.bnr__slider .slick-next {
+  right: 0;
+  /*配置を右端へ*/
+  z-index: 9;
+  /*前面に出す*/
+}
+
+/*=========================================
+②ニュース
+=========================================*/
+/*----------------------
+ニュース セクション全体
+----------------------*/
+.news {
+  padding: 60px 0;
+  /*上下の余白*/
+}
+
+/*----------------------
+ニュースの一覧リスト設定
+----------------------*/
+.newsList {
+  list-style-type: none;
+  /*デフォルトのリストマーカーを消す*/
+}
+
+/*----------------------
+ニュースの１件分のリンク全体
+----------------------*/
+.newsList a {
+  display: flex;
+  /*画像とテキストを横並びにする*/
+  justify-content: space-between;
+  /*左右にバランスよく配置*/
+  align-items: center;
+  /*高さ方向の中央揃え*/
+  margin-bottom: 20px;
+  /*各ニュースの下に余白*/
+  color: inherit;
+  /*親要素から文字色を引き継ぐ指定*/
+  text-decoration: none;
+  /*リンクの下線を消す*/
+}
+
+/*----------------------
+ニュースの画像部分（左側）
+----------------------*/
+.newsList__image {
+  width: 31.25%;
+  /*全体の約1/3の幅に設定*/
+}
+
+/*----------------------
+ニュースの画像部分（右側）
+----------------------*/
+.newsList__text {
+  width: 65.625%;
+  /*画像以外の残りスペース*/
+
+}
+
+/*----------------------
+ニュースの小見出し
+----------------------*/
+.newsList__title {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.5;
+  margin-top: 10px;
+}
+
+/*----------------------
+ニュースの本文
+----------------------*/
+.newsList__body {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.6;
+  margin-top: 4px;
+}
+
+/*=========================================
+③メディア
+=========================================*/
+/*----------------------
+メディア セクション全体
+----------------------*/
+.media {
+  padding: 60px 0;
+  /*上下の余白*/
+}
+
+/*-----------------------------
+動画をアスペクト比16:9で保持するラッパー
+-----------------------------*/
+.media__video {
+  width: 100%;
+  /*親幅いっぱい*/
+  padding-top: 56.25%;
+  /*16:9の比率（9/16=0.5625）*/
+  position: relative;
+  /*iframeを絶対配置するための基準*/
+}
+
+/*------------------------------
+YouTube等のiframeを完全にフィットさせる
+------------------------------*/
+.media__video iframe {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  /*親要素いっぱいに広げる*/
+  left: 0;
+  top: 0;
+  border: 0;
+}
+
+/*-----------------------------
+動画下の説明文
+-----------------------------*/
+.media .container>p {
+  margin-top: 13px;
+  line-height: 1.6;
+}
+
+/*=========================================
+④メニュー
+=========================================*/
+/*----------------------
+メディア セクション全体
+----------------------*/
+.menu {
+  padding: 60px 0;
+  /*上下の余白*/
+}
+
+.menu__title {
+  font-family: "Kosugi Maru", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  font-size: 1.5rem;
+  margin: 15px 0;
+}
+
+.menu__text {
+  margin-bottom: 60px;
+  line-height: 1.6;
+}
+
+/*----------------------
+ボタンスタイル
+----------------------*/
+.btn {
+  width: 100%;
+}
+
+.btn a {
+  width: 100%;
+  min-height: 120px;
+
+  display: flex;
+  /*ブロック表示にして全幅クリック可能に→frexへ変更*/
+  justify-content: center;
+  align-items: center;
+
+  font-family: "Kosugi Maru", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+
+  padding: 0 40px;
+  /*内側の余白（縦18px、横40px）*/
+  background-color: #6f8068;
+  /*ボタンの背景色*/
+  color: #f6f0e5;
+  /*文字色*/
+  font-size: 2rem;
+  line-height: 1.4;
+  text-align: center;
+  /*文字を中央揃え*/
+  text-decoration: none;
+  /*下線を消す*/
+  border-radius: 9999px;
+  /*丸いボタン*/
+
+  box-shadow: 0 9px 14px -6px rgba(51, 45, 41, 0.6);
+  /*ボタンに影をつける*/
+}
+
+.btn a:hover {
+  background-color: #5E6D58;
+  /*ホバー時の背景色*/
+}
+
+/*=========================================
+⑤アクセス
+=========================================*/
+/*----------------------
+Googleマップの表示領域
+----------------------*/
+.google-map {
+  width: 100%;
+  /*横幅いっぱいに表示*/
+  height: 480px;
+  /*高さを480pxに固定*/
+  border: 0;
+  /*境界線をなしにする*/
+}
+
+/*=========================================
+⑥フッター
+=========================================*/
+/*----------------------
+フッター全体
+----------------------*/
+footer {
+  background-color: #F6F0E5;
+  /*フッターの背景色*/
+  padding: 60px 0;
+  /*上下の余白*/
+}
+
+/*----------------------
+店舗画像
+----------------------*/
+.footer__shop-image {
+  width: 100%;
+  /*  height: 360px;*/
+  object-fit: cover;
+}
+
+/*----------------------
+フッターロゴ
+----------------------*/
+.footer__logo02 {
+  height: 240px;
+  /*高さを120pxに固定*/
+  display: flex;
+  /*フレックスボックス*/
+  justify-content: center;
+  /*横方向中央揃え*/
+  align-items: center;
+  /*縦方向中央揃え*/
+}
+
+.footer__logo02 img {
+  width: auto;
+  /*ロゴ画像の幅*/
+}
+
+/*----------------------
+フッターのリンクリスト
+----------------------*/
+footer ul {
+  display: flex;
+  /*横並びにする*/
+  list-style: none;
+  /*リストマーカーを消す*/
+  justify-content: center;
+  /*中央揃え*/
+}
+
+footer li {
+  height: 80px;
+  width: auto;
+  /*liの幅*/
+  margin: 0 10px;
+  /*左右の間隔*/
+}
+
+footer a {
+  padding: 5px;
+  /*内側の余白*/
+  display: block;
+  /*ブロック表示*/
+}
+
+footer a:hover {
+  text-decoration: underline;
+  /*ホバー時に下線を表示*/
+}
+
+/*----------------------
+フッターテキスト
+----------------------*/
+footer p {
+  height: 240px;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  /* 横方向中央 */
+  align-items: center;
+  /* 縦方向中央 */
+  text-align: center;
+}
+
+/*----------------------
+追加・ロゴのメディアクエリ
+----------------------*/
+/* 720px幅でのロゴ */
+.header__inner h1 {
+  width: 240px;
+  max-width: 100%;
+  line-height: 0;
+}
+
+.header__inner h1 img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* スマートフォン幅 */
+@media screen and (max-width: 480px) {
+  .header__inner {
+    height: 72px;
+    padding-left: 20px;
+  }
+
+  .header__inner h1 {
+    width: 150px;
+  }
+}
+
+/*----------------------
+追加・表示幅のメディアクエリ
+----------------------*/
+@media screen and (max-width: 480px) {
+  .newsList a {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .newsList__image {
+    width: 100px;
+    height: 100px;
+    flex-shrink: 0;
+  }
+
+  .newsList__text {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+
+/*----------------------
+追加・h2表示のメディアクエリ
+----------------------*/
+@media screen and (max-width: 480px) {
+  section h2 {
+    font-size: 1.3rem;
+  }
+}
+
+@media screen and (max-width:360px) {
+  section h2 {
+    font-size: 1.15rem;
+  }
+}
+
+/*--------------------------
+追加・メニュータイトルのメディアクエリ
+--------------------------*/
+@media screen and (max-width:480px) {
+  .menu__title {
+    font-size: 1.2rem;
+    margin: 13px 0
+  }
+}
+
+
+@media screen and (max-width:360px) {
+  .footer__logo02 img {
+    width: inherit;
+    max-height: 50%
+  }
+}
+
+/*--------------------------
+追加・フッターSNSロゴのメディアクエリ
+--------------------------*/
+@media screen and (max-width:360px) {
+  footer ul {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+/*--------------------------
+追加・こだわりボタンのメディアクエリ
+--------------------------*/
+@media screen and (max-width:600px) {
+  .btn a {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width:465px) {
+  .btn a {
+    font-size: 1.2rem;
+  }
+}
